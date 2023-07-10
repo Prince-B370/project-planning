@@ -1,0 +1,258 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400;500;600;700;800;900&family=Outfit:wght@100;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.main-body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 60px 1fr;
+  }
+  .header{
+   background-color: rgb(18, 26, 56);
+   grid-column: 2/3;
+   grid-row: 1/2;
+   display: flex;
+   align-items: center;
+  }
+  .sidebar{
+  background-color:rgb(18, 26, 56);
+  grid-column: 1/2;
+  grid-row: 2/3;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: "Poppins",sans-serif;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  height: 100%;
+  }
+  .main{
+   background-color:rgb(18, 31, 71);
+   grid-column: 2/3;
+   grid-row: 2/3;
+  }
+  li{
+    list-style:none;
+
+  }
+
+  /* a{
+    color: rgb(85,85, 83);
+    font-size: 14px;
+    display:table;
+    padding: 10px;
+  } */
+.fa-solid{
+    position: relative;
+    width: 20px;
+    height:20px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.nav-item{
+    position: relative;
+    top: 14px;
+    margin-left: 10px;
+}
+
+.logout{
+    position: absolute;
+    bottom: 20px;
+}
+
+li{
+    list-style-type: none;
+}
+ul{
+    padding-left: 5px;
+   
+}
+
+li a {
+    /* display: flex; */
+    align-items: center;
+    font-size: 14px;
+    display:table;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* justify-content:center; */
+}
+i{
+    color: rgb(201, 190, 190);
+}
+span{
+    color: rgb(201,190,190);
+    font-weight: 500;
+}
+
+li a:hover{
+    text-decoration: none;
+}
+.upper-btn-box{
+    display: flex;
+    width: 100%;
+    height:150px;
+    padding: 30px;
+}
+/* .upper-btn-box .left-box{
+    width: 50%;
+    height: 140px;
+    padding: 10px;
+}
+.upper-btn-box .right-box{
+    width: 50%;
+    height: 100%;
+}
+.upper-btn-box .left-box button{
+    border: none;
+    outline: none;
+} */
+.header button{
+    border: none;
+    outline: none;
+    background-color: rgb(25, 0, 255);
+    font-size: 15px;
+    font-family: poppins;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 5px 5px;
+    text-align: center;
+    height: 42px;
+    width: 30%;
+    border-radius: 2px;
+    padding: 5px;
+    margin-top: 10px;
+}
+.table-box{
+    margin-left: 30px;
+    margin-right: 30px;
+    color: rgb(201, 190, 190);
+    margin-top: 30px;
+}
+.table-box  table{
+    /* border: 1px solid #fff; */
+    width: 100%;
+}
+
+.table-box  table tr th{
+    border-right:none;
+    padding: 30px 0 0;
+    font-family: "poppins",sans-serif;
+    border-bottom: 1px solid grey;
+    text-align: center;
+    background: rgb(18, 26, 56);
+}
+.table-box table tr td{
+    color: #fff;
+    /* border-right: 1px dotted grey;
+    border-left: 1px dotted grey; */
+    padding: 5px 0 0;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    font-family: "poppins";
+    font-weight: 200;
+}
+
+.table-box table tr td button{
+    border: none;
+    outline: none;
+    background-color: rgb(25, 0, 255);
+    font-size: 12px;
+    font-family: poppins;
+    font-weight: 500;
+    color: #fff;
+    margin: 0 5px 5px;
+    text-align: center;
+    height: 30px;
+    width: 60px;
+    border-radius: 2px;
+    
+}
+.view-button,
+.delete-button{
+    /* padding: 5px; */
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+}
+
+
+.mod{
+    width: 400px;
+    height: 550px;
+    background:rgb(216, 214, 214);
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    padding: 30px;
+    /* transform: translate(-20%,-20%);  */
+    border-top: 20px solid rgb(25, 0, 255);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+.mod.active{
+    opacity: 1;
+    z-index: 1;
+}
+
+.mod .input-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.mod .input-box label{
+    font-size: 15px;
+    padding: 8px;
+    font-weight: bold;
+    margin: 2px 0px;
+}
+
+.mod .input-box input,select{
+    width: 70%;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(25, 0, 255);
+    background: transparent;
+}
+.mod button{
+    border: none;
+    outline: none;
+    background-color: rgb(25, 0, 255);
+    font-size: 15px;
+    font-family: poppins;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 5px 5px;
+    text-align: center;
+    height: 42px;
+    width: 50%;
+    border-radius: 2px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.mod .input-box button:disabled{
+    filter: grayscale(90%);
+}
+.mod .close-icon{
+    position: absolute;
+    right: 0px;
+    top: -30px;
+    font-size: 30px;
+    color: #EE534F;
+}
+
+

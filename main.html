@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Planning</title>
+    <link rel="stylesheet" href="main-body-styles.css">
+    <script src="https://kit.fontawesome.com/96e5cb2de4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+</head>
+<body class="main-body">
+    
+    <!-- <h1 class="welcome">KIIT Easy Plan</h1>
+    <hr style="opacity: 0.5; margin-bottom: 25px;"> -->
+    
+    <!-- <button type="button" class="button">
+        <span class="button-text">Add Project</span>
+        <span class="button-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        
+    </button>
+
+    <button type="button" class="button" onclick="calculateDuration()">
+        <span class="button-text">Save</span>
+        <span class="button-icon">
+            <i class="fa-solid fa-floppy-disk"></i>
+        </span>
+    </button> -->
+    
+    
+    <!-- <div class="input-box1">
+        <div class="input" id="projectName">
+            <span>Project Title</span>
+            <input type="text" name="" id="" placeholder="E.g. Learning Management System" required>
+        </div>
+
+        <div class="input" id="projectManager">
+            <span>Project Manager</span>
+            <input type="text" name="" id="" placeholder="E.g. Peter" required>
+        </div>
+    </div>
+
+    <div class="input-box2">
+        <div class="input" id="startDate">
+            <span>Start Date</span>
+            <input type="date" name="" id="" placeholder="Start Date" required>
+        </div>
+
+        <div class="input" id="endDate">
+            <span>End Date</span>
+            <input type="date" name="" id="" required>
+        </div>
+
+        <div class="input" id="projectDuration">
+            <span>Duration (in days)</span>
+            <div id="duration"></div>
+        </div>
+
+    </div>
+    
+    <table id="myTable">
+        <thead>
+          <tr>
+            <th>WBS. NO.</th>
+            <th>Task</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Duration(Days)</th>
+            <th>Status</th>
+            <th>Budget</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      
+      <button id="addRowBtn" class="button" onclick="addRow()">
+        <span class="button-text">Add Task</span>
+        <span class="button-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+      </button>
+<script src="index.js"></script> -->
+<header class="header">
+    <!-- <div class="upper-btn-box">
+        <div class="left-box">
+            <button>
+                <i class="fa-solid fa-plus"></i>Add Task
+            </button>
+            <button>
+                <i class="fa-regular fa-eraser"></i>Clear Filtering
+            </button>
+        </div>
+
+        <div class="right-box"></div>
+    </div> -->
+    <!-- <h6 style="color: #EE534F; font-family: poppins;">KIIT Project Planning Tool</h6> -->
+    <button class="add-task-btn" id="add-task-btn" >Add Task</button>
+    <button class="add-task-btn" id="add-task-btn" >Add Resource</button>
+    <button class="add-task-btn" id="add-task-btn" >New Project</button>
+    <input type="search">
+    
+</header>
+
+<!--The Side Nav-->
+<section class="sidebar">
+    <ul>
+        <li>
+            <a href="#">
+                <img src="" alt="">
+                <span class="nav-item">Kenya Institute</span>
+            </a>
+        </li>
+
+        <li><a href="#">
+            <i class="fa-solid fa-house"></i>
+            <span class="nav-item">Home</span>
+        </a></li>
+
+        <li><a href="#">
+            <i class="fa-solid fa-diagram-project"></i>
+            <span class="nav-item">Projects</span>
+        </a></li>
+
+        <li><a href="#">
+            <i class="fa-solid fa-people-group"></i>
+            <span class="nav-item">Team</span>
+        </a></li>
+
+        <li><a href="#">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <span class="nav-item">Resources</span>
+        </a></li>
+
+        <li><a href="#">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span class="nav-item">Schedule</span>
+        </a></li>
+
+        <li><a href="#" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="nav-item">Log out</span>
+        </a></li>
+    </ul>
+</section>
+
+<main class="main">
+    <div class="table-box">
+        <table>
+            <tr>
+                <th>WBS. NO.</th>
+                <th>Task</th>
+                <th>Assignee</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Duration</th>
+                <th>Resources</th>
+                <th>Budget</th>
+                <th>Status</th>
+                <th>Actions</th>
+                
+            </tr>
+            <tbody id="table-data">
+
+            </tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>Task 1</td>
+                <td>Assignee</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Duration</td>
+                <td>Resources</td>
+                <td>Budget</td>
+                <td>Status</td>
+                <td>
+                    <button class="view-button">Edit</button>
+                    <button style="background: #EE534F;" class="delete-button">Delete</button>
+                </td>
+            </tr> -->
+        </table>
+    </div>
+
+    <div class="mod">
+        <i class="fa-solid fa-circle-xmark close-icon"></i>
+        <form action="" id="add-form">
+            <div class="input-box">
+                <label for="wbs">WBS. NO.</label>
+                <input type="text" id="wbs">
+            </div>
+    
+            <div class="input-box">
+                <label for="task">Task</label>
+                <input type="text" id="task">
+            </div>
+    
+            <div class="input-box">
+                <label>Assignee</label>
+                <select name="" id="assignee">
+                    <option value="Option 1">Option 1</option>
+                    <option value="Option 2">Option 2</option>
+                </select>
+            </div>
+    
+            <div class="input-box">
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="end-date">End Date</label>
+                <input type="date" id="end-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" readonly>
+            </div>
+    
+            <div class="input-box">
+                <label for="resources">Resources</label>
+                <input type="text" id="resources">
+            </div>
+    
+            <div class="input-box">
+                <label for="budget">Budget</label>
+                <input type="text" id="budget">
+            </div>
+    
+            <div class="input-box">
+                <label for="taskstatus">Status</label>
+                <input type="text" id="taskstatus">
+            </div>
+            <div class="input-box">
+                <button  id="confirm-add-btn">Add</button>
+                <button disabled="disabled" style="background: #EE534F;">Update</button>
+            </div>
+        </form>
+    
+    </div>
+
+</main>
+<script src="index.js"></script>
+</body>
+</html>
