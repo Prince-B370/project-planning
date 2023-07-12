@@ -206,8 +206,8 @@ addForm.onsubmit = function(e){
   closeIcon.click();
 }
 
-if(localStorage.getItem("taskDetails") != null){
-  taskDetails = JSON.parse(localStorage.getItem("taskDetails"));
+if(localStorage.getItem("taskData") != null){
+  taskDetails = JSON.parse(localStorage.getItem("taskData"));
   console.log(taskDetails)
 }
 
@@ -223,18 +223,22 @@ const additionData = () => {
     budget:budget.value,
     status:taskstatus.value
   })
+  //Convert the array into a string that can be saved in the local storage
   taskString = JSON.stringify(taskDetails);
+  //Setting the key as taskData and value as taskString
 localStorage.setItem("taskData",taskString);
+swal("Good job!", "Task Addition Successful!", "success");
 }
 
 tableData = document.querySelector("#table-data");
-console.log(tableData);
 
+/*********Getting data from the local storage and displaying it on the HTML table************/
 const getDataFromLocal = () => {
   tableData.innerHTML = "";
+  //Parsing the taskData string object
     const taskDetails = JSON.parse(localStorage.getItem("taskData"));
     taskDetails.forEach((data, index) => {
-      tableData.innerHTML += `<tr>
+      tableData.innerHTML += `<tr index = ${index}>
       <td>${data.wbs}</td>
       <td>${data.task}</td>
       <td>${data.assignee}</td>
@@ -251,6 +255,25 @@ const getDataFromLocal = () => {
       </td>
     </tr>`;
     });
+
+    //Delete button
+    var allDelBtn = document.querySelectorAll(".delete-button");//array of delete buttons
+    // console.log(allDelBtn);
+    var i;
+    for(i = 0; i < allDelBtn.length; i++){ //loop through the delete buttons
+      allDelBtn[i].onclick = function(){
+
+        //Grabbing the parent row of the clicked button
+        var tr = this.parentElement.parentElement;
+        //Obtaining the row's id
+        var id = tr.getAttribute("index");
+        taskDetails.splice(id, 1);
+        tr.remove();
+        localStorage.setItem("taskData",JSON.stringify(taskDetails));
+        //Reloading the page
+        location.reload();
+      }
+    }
 };
 
 getDataFromLocal();
