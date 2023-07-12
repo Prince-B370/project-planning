@@ -143,8 +143,10 @@ addBtn.addEventListener("click",()=>{
 })
 
 
-//The modal
+//The add task modal
 var modal = document.querySelector(".mod");
+//The add project modal
+var addProjectModal = document.querySelector(".mod-add-project");
 
 //The close icon
 var closeIcon = document.querySelector(".close-icon");
@@ -172,8 +174,32 @@ var status = document.querySelector("#status");
 var addForm = document.querySelector("#add-form");
 /******************************END OF GLOBAL VARIABLES*************************/
 
-//Calculation of duration
-function updateNumDays() {
+//Calculation of Project duration
+function updateProjectNumDays() {
+  var startDate = new Date(document.querySelector("#project-start-date").value);
+  var endDate = new Date(document.querySelector("#project-end-date").value);
+  
+  // Check if both start date and end date are valid
+  if (!isNaN(startDate) && !isNaN(endDate)) {
+    var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+    var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if(numDays>1){
+      document.querySelector("#project-duration").value = numDays + " days";
+    }
+    else{
+      document.querySelector("#project-duration").value = numDays + " day";
+      }
+  } 
+  else {
+    document.querySelector("#project-duration").value = ""; // Clear the duration if dates are invalid
+  }
+}
+
+document.querySelector("#project-start-date").addEventListener("input", updateProjectNumDays);
+document.querySelector("#project-end-date").addEventListener("input", updateProjectNumDays);
+
+//Calculation of Task duration
+function updateTaskNumDays() {
   var startDate = new Date(document.querySelector("#start-date").value);
   var endDate = new Date(document.querySelector("#end-date").value);
   
@@ -192,8 +218,8 @@ function updateNumDays() {
   }
 }
 
-document.querySelector("#start-date").addEventListener("input", updateNumDays);
-document.querySelector("#end-date").addEventListener("input", updateNumDays);
+document.querySelector("#start-date").addEventListener("input", updateTaskNumDays);
+document.querySelector("#end-date").addEventListener("input", updateTaskNumDays);
 
 
 //The confirm add button
@@ -249,7 +275,7 @@ const getDataFromLocal = () => {
       <td>${data.budget}</td>
       <td>${data.status}</td>
       <td>
-        <button class="view-button">Edit</button>
+        <button class="view-button edit-btn">Edit</button>
         <button style="background: #EE534F;" class="delete-button">Delete</button>
         <button class="activity-button" >Activity</button>
       </td>
@@ -267,19 +293,92 @@ const getDataFromLocal = () => {
         var tr = this.parentElement.parentElement;
         //Obtaining the row's id
         var id = tr.getAttribute("index");
-        taskDetails.splice(id, 1);
-        tr.remove();
-        localStorage.setItem("taskData",JSON.stringify(taskDetails));
-        //Reloading the page
-        location.reload();
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this record",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            taskDetails.splice(id, 1);
+            tr.remove();
+            localStorage.setItem("taskData",JSON.stringify(taskDetails));
+      
+            swal("Poof! Your record has been deleted!", {
+              icon: "success",
+            });
+           //Reloading the page
+           location.reload();
+            
+          } else {
+            swal("Your record is safe!");
+          }
+        });
+        
+        
       }
     }
+
+    //updating code
+
+  var allEditBtn = document.querySelectorAll(".edit-btn");//array of update buttons
+  for(i = 0; i < allEditBtn.length; i++){
+    allEditBtn[i].onclick = function(){
+      var tr = this.parentElement.parentElement;
+      var td = tr.getElementsByTagName("td");
+      var index = tr.getAttribute("index");
+      var wbs = td[0].innerHTML;
+      var task = td[1].innerHTML;
+      var assignee = td[2].innerHTML;
+      var startDate = td[3].innerHTML;
+      var endDate = td[4].innerHTML;
+      var duration = td[5].innerHTML;
+      var resources = td[6].innerHTML;
+      var budget = td[7].innerHTML;
+      var status = td[8].innerHTML;
+      addBtn.click();
+
+      var wbs = document.querySelector("#wbs");
+var task = document.querySelector("#task");
+var assignee = document.querySelector("#assignee");
+var startDate = document.querySelector("#start-date");
+var endDate = document.querySelector("#end-date");
+var duration = document.querySelector("#duration");
+var resources = document.querySelector("#resources");
+var budget = document.querySelector("#budget");
+var status = document.querySelector("#status");
+var addForm = document.querySelector("#add-form");
+    }
+  }
+
 };
 
 getDataFromLocal();
 
 
 
+//New Project Button
+var newProjectButton = document.querySelector("#add-project-btn");
+newProjectButton.addEventListener("click",()=>{
+  addProjectModal.classList.add("active");
+});
+
+//Add button in add project
+var confirmAddProjectButton = document.querySelector("#confirm-add-project-btn");
+confirmAddProjectButton.addEventListener("click",()=>{
+  //if data is successfully saved in the database, then
+  swal("Good Job","Project added Successfully","success");
+  addProjectModal.classList.remove("active");
+})
+
+//Project close button
+
+var projectCloseButton = document.querySelector(".project-close-icon");
+projectCloseButton.addEventListener("click",()=>{
+  addProjectModal.classList.remove("active");
+})
 
 
 

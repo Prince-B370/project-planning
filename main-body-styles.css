@@ -187,7 +187,7 @@ li a:hover{
   width: 30px;
 }
 
-
+/*Styles for Modal for adding the task*/
 .mod{
     width: 400px;
     height: 550px;
@@ -248,6 +248,75 @@ li a:hover{
     filter: grayscale(90%);
 }
 .mod .close-icon{
+    position: absolute;
+    right: 0px;
+    top: -30px;
+    font-size: 30px;
+    color: #EE534F;
+}
+
+
+/*Styles for modal for adding a new project*/
+.mod-add-project{
+    width: 400px;
+    height: 465px;
+    background:rgb(216, 214, 214);
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    padding: 30px;
+    /* transform: translate(-20%,-20%);  */
+    border-top: 20px solid rgb(25, 0, 255);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+.mod-add-project.active{
+    opacity: 1;
+    z-index: 1;
+}
+
+.mod-add-project .input-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.mod-add-project .input-box label{
+    font-size: 15px;
+    padding: 8px;
+    font-weight: bold;
+    margin: 2px 0px;
+}
+
+.mod-add-project .input-box input,select{
+    width: 70%;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(25, 0, 255);
+    background: transparent;
+}
+.mod-add-project button{
+    border: none;
+    outline: none;
+    background-color: rgb(25, 0, 255);
+    font-size: 15px;
+    font-family: poppins;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 5px 5px;
+    text-align: center;
+    height: 42px;
+    width: 50%;
+    border-radius: 2px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.mod-add-project .input-box button:disabled{
+    filter: grayscale(90%);
+}
+.mod-add-project .project-close-icon{
     position: absolute;
     right: 0px;
     top: -30px;

@@ -101,8 +101,8 @@
     </div> -->
     <!-- <h6 style="color: #EE534F; font-family: poppins;">KIIT Project Planning Tool</h6> -->
     <button class="add-task-btn" id="add-task-btn" >Add Task</button>
-    <button class="add-task-btn" id="add-task-btn" >Add Resource</button>
-    <button class="add-task-btn" id="add-task-btn" >New Project</button>
+    <button class="add-task-btn" id="add-resource-btn" >Add Resource</button>
+    <button class="add-task-btn" id="add-project-btn" >New Project</button>
     <input type="search">
     
 </header>
@@ -168,24 +168,10 @@
             <tbody id="table-data">
 
             </tbody>
-            <!-- <tr>
-                <td>1</td>
-                <td>Task 1</td>
-                <td>Assignee</td>
-                <td>Start Date</td>
-                <td>End Date</td>
-                <td>Duration</td>
-                <td>Resources</td>
-                <td>Budget</td>
-                <td>Status</td>
-                <td>
-                    <button class="view-button">Edit</button>
-                    <button style="background: #EE534F;" class="delete-button">Delete</button>
-                </td>
-            </tr> -->
+           
         </table>
     </div>
-
+<!--Modal for adding a task-->
     <div class="mod">
         <i class="fa-solid fa-circle-xmark close-icon"></i>
         <form action="" id="add-form">
@@ -239,6 +225,47 @@
             <div class="input-box">
                 <button  id="confirm-add-btn">Add</button>
                 <button disabled="disabled" style="background: #EE534F;">Update</button>
+            </div>
+        </form>
+    
+    </div>
+
+    <!--Modal for adding a new project-->
+    <div class="mod-add-project">
+        <i class="fa-solid fa-circle-xmark project-close-icon"></i>
+        <form action="" id="add-form">
+            <div class="input-box">
+                <label for="project-name">Project Name</label>
+                <input type="text" id="project-name">
+            </div>
+    
+            <div class="input-box">
+                <label for="project-manager">Project Manager</label>
+                <input type="text" id="project-manager">
+            </div>
+    
+            <div class="input-box">
+                <label for="project-start-date">Start Date</label>
+                <input type="date" id="project-start-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="project-end-date">End Date</label>
+                <input type="date" id="project-end-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="project-duration">Duration</label>
+                <input type="text" id="project-duration" readonly>
+            </div>
+    
+            <div class="input-box">
+                <label for="project-budget">Budget</label>
+                <input type="text" id="project-budget">
+            </div>
+
+            <div class="input-box">
+                <button  id="confirm-add-project-btn">Add</button>
             </div>
         </form>
     
