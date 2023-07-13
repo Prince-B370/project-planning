@@ -340,7 +340,7 @@ const getDataFromLocal = () => {
       var status = td[8].innerHTML;
       addBtn.click();
 
-      var wbs = document.querySelector("#wbs");
+var wbs = document.querySelector("#wbs");
 var task = document.querySelector("#task");
 var assignee = document.querySelector("#assignee");
 var startDate = document.querySelector("#start-date");
