@@ -162,16 +162,18 @@ closeIcon.addEventListener("click",()=>{
 
 /******************************START OF GLOBAL VARIABLES***********************/
 var taskDetails = [];
-var wbs = document.querySelector("#wbs");
-var task = document.querySelector("#task");
-var assignee = document.querySelector("#assignee");
-var startDate = document.querySelector("#start-date");
-var endDate = document.querySelector("#end-date");
-var duration = document.querySelector("#duration");
-var resources = document.querySelector("#resources");
-var budget = document.querySelector("#budget");
-var status = document.querySelector("#status");
+var wbsEl = document.querySelector("#wbs");
+var taskEl = document.querySelector("#task");
+var assigneeEl = document.querySelector("#assignee");
+var startDateEl = document.querySelector("#start-date");
+var endDateEl = document.querySelector("#end-date");
+var durationEl = document.querySelector("#duration");
+var resourcesEl = document.querySelector("#resources");
+var budgetEl = document.querySelector("#budget");
+var statusEl = document.querySelector("#taskstatus");
 var addForm = document.querySelector("#add-form");
+var updateBtn = document.querySelector("#updateBtn");
+
 /******************************END OF GLOBAL VARIABLES*************************/
 
 //Calculation of Project duration
@@ -224,7 +226,7 @@ document.querySelector("#end-date").addEventListener("input", updateTaskNumDays)
 
 //The confirm add button
 var confirmAdd = document.querySelector("#confirm-add-btn");
-addForm.onsubmit = function(e){
+confirmAdd.onclick = function(e){
   e.preventDefault();
   additionData();
   getDataFromLocal();
@@ -239,15 +241,15 @@ if(localStorage.getItem("taskData") != null){
 
 const additionData = () => {
   taskDetails.push({
-    wbs:wbs.value,
-    task:task.value,
-    assignee:assignee.value,
-    startDate:startDate.value,
-    endDate:endDate.value,
-    duration:duration.value,
-    resources:resources.value,
-    budget:budget.value,
-    status:taskstatus.value
+    wbs:wbsEl.value,
+    task:taskEl.value,
+    assignee:assigneeEl.value,
+    startDate:startDateEl.value,
+    endDate:endDateEl.value,
+    duration:durationEl.value,
+    resources:resourcesEl.value,
+    budget:budgetEl.value,
+    status:statusEl.value
   })
   //Convert the array into a string that can be saved in the local storage
   taskString = JSON.stringify(taskDetails);
@@ -337,19 +339,36 @@ const getDataFromLocal = () => {
       var duration = td[5].innerHTML;
       var resources = td[6].innerHTML;
       var budget = td[7].innerHTML;
-      var status = td[8].innerHTML;
+      var tstatus = td[8].innerHTML;
+      
       addBtn.click();
+      confirmAdd.disabled = true;
+      updateBtn.disabled = false;
+      wbsEl.value = wbs;
+      taskEl.value = task;
+      assigneeEl.value = assignee;
+      startDateEl.value = startDate;
+      endDateEl.value = endDate;
+      durationEl.value = duration;
+      resourcesEl.value = resources;
+      budgetEl.value = budget;
+      statusEl.value = tstatus;
 
-var wbs = document.querySelector("#wbs");
-var task = document.querySelector("#task");
-var assignee = document.querySelector("#assignee");
-var startDate = document.querySelector("#start-date");
-var endDate = document.querySelector("#end-date");
-var duration = document.querySelector("#duration");
-var resources = document.querySelector("#resources");
-var budget = document.querySelector("#budget");
-var status = document.querySelector("#status");
-var addForm = document.querySelector("#add-form");
+      updateBtn.onclick = function(e){
+         taskDetails[index] = {
+          wbs:wbsEl.value,
+          task:taskEl.value,
+          assignee:assigneeEl.value,
+          startDate:startDateEl.value,
+          endDate:endDateEl.value,
+          duration:durationEl.value,
+          resources:resourcesEl.value,
+          budget:budgetEl.value,
+          status:statusEl.value
+         }
+         localStorage.setItem("taskData",JSON.stringify(taskDetails));
+      }
+      
     }
   }
 
@@ -380,6 +399,17 @@ projectCloseButton.addEventListener("click",()=>{
   addProjectModal.classList.remove("active");
 })
 
+//creating an activity
+
+var allActivityBtn = document.querySelectorAll(".activity-button");//array of activity buttons
+  for(var i = 0; i < allActivityBtn.length; i++){
+    allActivityBtn[i].onclick = function(){
+      var tr = this.parentElement.parentElement;
+      var v = document.createElement("tr");
+      tr.appendChild(v);
+      v.innerHTML = `
+      `
+    }}
 
 
 
