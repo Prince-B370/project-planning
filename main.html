@@ -103,7 +103,7 @@
     <button class="add-task-btn" id="add-task-btn" >Add Task</button>
     <button class="add-task-btn" id="add-resource-btn" >Add Resource</button>
     <button class="add-task-btn" id="add-project-btn" >New Project</button>
-    <input type="search">
+    
     
 </header>
 
@@ -122,7 +122,7 @@
             <span class="nav-item">Home</span>
         </a></li>
 
-        <li><a href="#">
+        <li><a href="projectspage.html">
             <i class="fa-solid fa-diagram-project"></i>
             <span class="nav-item">Projects</span>
         </a></li>
@@ -142,10 +142,16 @@
             <span class="nav-item">Schedule</span>
         </a></li>
 
+        <li><a href="#">
+            <i class="fa-solid fa-table"></i>
+            <span class="nav-item">Log Frame</span>
+        </a></li>
+
         <li><a href="#" class="logout">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="nav-item">Log out</span>
         </a></li>
+        
     </ul>
 </section>
 
@@ -266,6 +272,65 @@
 
             <div class="input-box">
                 <button  id="confirm-add-project-btn">Add</button>
+            </div>
+        </form>
+    
+    </div>
+
+    <!--Modal for adding an activity-->
+    <div class="mod-add-activity">
+        <i class="fa-solid fa-circle-xmark activity-close-icon"></i>
+        <form action="" id="add-form">
+            <div class="input-box">
+                <label for="activity-wbs">WBS. NO.</label>
+                <input type="text" id="activity-wbs">
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-name">Activity</label>
+                <input type="text" id="activity-name">
+            </div>
+    
+            <div class="input-box">
+                <label>Assignee</label>
+                <select name="" id="activity-assignee">
+                    <option value="Option 1">Option 1</option>
+                    <option value="Option 2">Option 2</option>
+                </select>
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-start-date">Start Date</label>
+                <input type="date" id="activity-start-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-end-date">End Date</label>
+                <input type="date" id="activity-end-date">
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-duration">Duration</label>
+                <input type="text" id="activity-duration" readonly>
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-resources">Resources</label>
+                <input type="text" id="activity-resources">
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-budget">Budget</label>
+                <input type="text" id="activity-budget">
+            </div>
+    
+            <div class="input-box">
+                <label for="activity-status">Status</label>
+                <input type="text" id="activity-status">
+            </div>
+            <div class="input-box">
+                <button  id="confirm-activity-add-btn">Add</button>
+                <button id="updateBtn" disabled="disabled" style="background: #EE534F;">Update</button>
             </div>
         </form>
     

@@ -327,4 +327,80 @@ li a:hover{
     color: #EE534F;
 }
 
+.activity{
+    background: none;
+    outline: 0;
+    border: none;
+    color: #fff;
+    text-align: center;
+}
+/*Styles for modal for adding a new activity*/
+.mod-add-activity{
+    
+    width: 400px;
+    height: 550px;
+    background:rgb(216, 214, 214);
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    padding: 30px;
+    /* transform: translate(-20%,-20%);  */
+    border-top: 20px solid rgb(25, 0, 255);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+.mod-add-activity.active{
+    opacity: 1;
+    z-index: 1;
+}
+
+.mod-add-activity .input-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.mod-add-activity .input-box label{
+    font-size: 15px;
+    padding: 8px;
+    font-weight: bold;
+    margin: 2px 0px;
+}
+
+.mod-add-activity .input-box input,select{
+    width: 70%;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(25, 0, 255);
+    background: transparent;
+}
+.mod-add-activity button{
+    border: none;
+    outline: none;
+    background-color: rgb(25, 0, 255);
+    font-size: 15px;
+    font-family: poppins;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 5px 5px;
+    text-align: center;
+    height: 42px;
+    width: 50%;
+    border-radius: 2px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.mod-add-activity .input-box button:disabled{
+    filter: grayscale(90%);
+}
+.mod-add-activity .activity-close-icon{
+    position: absolute;
+    right: 0px;
+    top: -30px;
+    font-size: 30px;
+    color: #EE534F;
+}
+
 

@@ -147,8 +147,10 @@ addBtn.addEventListener("click",()=>{
 var modal = document.querySelector(".mod");
 //The add project modal
 var addProjectModal = document.querySelector(".mod-add-project");
+//The add activity modal
+var addActivityModal = document.querySelector(".mod-add-activity");
 
-//The close icon
+//The task close icon
 var closeIcon = document.querySelector(".close-icon");
 closeIcon.addEventListener("click",()=>{
   modal.classList.remove("active");
@@ -222,6 +224,28 @@ function updateTaskNumDays() {
 
 document.querySelector("#start-date").addEventListener("input", updateTaskNumDays);
 document.querySelector("#end-date").addEventListener("input", updateTaskNumDays);
+
+function updateActivityNumDays() {
+  var startDate = new Date(document.querySelector("#activity-start-date").value);
+  var endDate = new Date(document.querySelector("#activity-end-date").value);
+  
+  // Check if both start date and end date are valid
+  if (!isNaN(startDate) && !isNaN(endDate)) {
+    var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+    var numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    if(numDays>1){
+      document.querySelector("#activity-duration").value = numDays + " days";
+    }
+    else{
+      document.querySelector("#activity-duration").value = numDays + " day";
+    }
+  } else {
+    document.querySelector("#activity-duration").value = ""; // Clear the duration if dates are invalid
+  }
+}
+
+document.querySelector("#activity-start-date").addEventListener("input", updateActivityNumDays);
+document.querySelector("#activity-end-date").addEventListener("input", updateActivityNumDays);
 
 
 //The confirm add button
@@ -399,17 +423,61 @@ projectCloseButton.addEventListener("click",()=>{
   addProjectModal.classList.remove("active");
 })
 
+//Activity close button
+var activityCloseButton = document.querySelector(".activity-close-icon");
+activityCloseButton.addEventListener("click",()=>{
+  addActivityModal.classList.remove("active");
+})
+
 //creating an activity
 
-var allActivityBtn = document.querySelectorAll(".activity-button");//array of activity buttons
-  for(var i = 0; i < allActivityBtn.length; i++){
-    allActivityBtn[i].onclick = function(){
-      var tr = this.parentElement.parentElement;
-      var v = document.createElement("tr");
-      tr.appendChild(v);
-      v.innerHTML = `
-      `
-    }}
+var allActivityBtn = document.querySelectorAll(".activity-button"); // array of activity buttons
+
+for (var i = 0; i < allActivityBtn.length; i++) {
+  allActivityBtn[i].addEventListener("click", function() {
+    var tr = this.parentElement.parentElement;
+    var childRow = document.createElement("tr");
+
+    // Create table data elements for the child row
+    var tdsHTML = `
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td style = "border-right:1px solid #fff;">
+        <button class="edit-activity-button">Edit</button>
+      </td>
+    `;
+
+    childRow.innerHTML = tdsHTML;
+    tr.parentNode.insertBefore(childRow, tr.nextSibling);
+  });
+}
+
+
+  // var confirmAddActivityButton = document.querySelector("#confirm-activity-add-btn");
+  // confirmAddActivityButton.addEventListener("click",()=>{
+  //   alert("Activity Add")
+  //   var tr = document.parentElement.parentElement;
+  //   var v = document.createElement("tr");
+  // })
+
+   var editActivityButton = document.querySelectorAll(".edit-activity-button");
+
+   console.log(editActivityButton);
+   for (var i = 0; i < editActivityButton.length; i++) {
+    editActivityButton[i].addEventListener("click", () =>{
+     alert("Hey");
+   })
+  }
+
+
+
 
 
 
