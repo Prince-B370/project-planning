@@ -344,7 +344,7 @@ li a:hover{
     top: 10%;
     left: 20%;
     padding: 30px;
-    /* transform: translate(-20%,-20%);  */
+
     border-top: 20px solid rgb(25, 0, 255);
     opacity: 0;
     z-index: -1;
@@ -401,6 +401,6 @@ li a:hover{
     top: -30px;
     font-size: 30px;
     color: #EE534F;
-}
+} 
 
 
