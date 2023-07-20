@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" title="Kenya Institute">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team</title>
+    <link rel="stylesheet" href="resources.css">
+    <script src="https://kit.fontawesome.com/96e5cb2de4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main class="table">
+        <section class="table__header">
+            <h1>Project's Resources</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search by Name">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <button type="button" style="font-family: poppins; padding: 10px; border: none; border-radius: 3px;" id="add-resource-button">New Resource</button>
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" id="toPDF">PDF </label>
+                    <label for="export-file" id="tosON">JSON </label>
+                    <label for="export-file" id="toCSV">CSV </label>
+                    <label for="export-file" id="toEXCEL">EXCEL</label>
+                </div>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Resource Name <span class="icon-arrow">&UpArrow;</span></th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 1 </td>
+                        <td>Zinzu Chan Lee</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+<!-- Modal for Registering a new Assignee -->
+    <div class="mod-add-resource">
+      <i class="fa-solid fa-circle-xmark resource-close-icon"></i>
+      <h3 style="font-family: poppins;text-align: center;">Resources</h3>
+      <form action="" id="add-form">
+          <div class="input-box">
+              <label for="resource-id">Id</label>
+              <input type="text" id="resource-id">
+          </div>
+  
+          <div class="input-box">
+              <label for="resource-name">Resource Name</label>
+              <input type="text" id="resource-name">
+          </div>
+
+          <div class="input-box">
+              <button  id="confirm-resource-add-btn">Add</button>
+              <button id="updateBtn" disabled="disabled" style="background: #EE534F;">Update</button>
+          </div>
+      </form>
+  
+  </div>
+    <script src="resources.js"></script>
+</body>
+
+</html>

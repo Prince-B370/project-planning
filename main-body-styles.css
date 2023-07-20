@@ -15,6 +15,7 @@
    grid-row: 1/2;
    display: flex;
    align-items: center;
+   
   }
   .sidebar{
   background-color:rgb(18, 26, 56);
@@ -131,6 +132,7 @@ li a:hover{
     padding: 5px;
     margin-top: 10px;
 }
+
 .table-box{
     margin-left: 30px;
     margin-right: 30px;

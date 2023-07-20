@@ -306,8 +306,8 @@ thead th.active,tbody td.active {
 
 
 
-/*Styles for modal for adding a new assignee*/
-.mod-add-assignee{
+/*Styles for modal for adding a new resource*/
+.mod-add-resource{
     
     width: 400px;
     height: 350px;
@@ -322,24 +322,24 @@ thead th.active,tbody td.active {
     z-index: -1;
     transition: 0.5s ease-in-out;
 }
-.mod-add-assignee.active{
+.mod-add-resource.active{
     opacity: 1;
     z-index: 1;
 }
 
-.mod-add-assignee .input-box{
+.mod-add-resource .input-box{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.mod-add-assignee .input-box label{
+.mod-add-resource .input-box label{
     font-size: 15px;
     padding: 8px;
     font-weight: bold;
     margin: 2px 0px;
 }
 
-.mod-add-assignee .input-box input,select{
+.mod-add-resource .input-box input,select{
     width: 70%;
     margin: 10px 0;
     border: none;
@@ -347,7 +347,7 @@ thead th.active,tbody td.active {
     border-bottom: 2px solid rgb(25, 0, 255);
     background: transparent;
 }
-.mod-add-assignee button{
+.mod-add-resource button{
     border: none;
     outline: none;
     background-color: rgb(25, 0, 255);
@@ -364,10 +364,10 @@ thead th.active,tbody td.active {
     margin-top: 10px;
 }
 
-.mod-add-assignee .input-box button:disabled{
+.mod-add-resource .input-box button:disabled{
     filter: grayscale(90%);
 }
-.mod-add-assignee .assignee-close-icon{
+.mod-add-resource .resource-close-icon{
     position: absolute;
     right: 0px;
     left:94.9%;
