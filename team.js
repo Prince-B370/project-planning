@@ -218,3 +218,108 @@ add_assignee_button.addEventListener("click",()=>{
 assignee_close_button.addEventListener("click",()=>{
     add_assignee_modal.classList.remove("active");
 })
+
+//Grabbing the input fields
+var assignee_name = document.querySelector("#assignee-name");
+var assignee_email = document.querySelector("#assignee-email");
+var assignee_contact = document.querySelector("#assignee-contact");
+var assignee_password = document.querySelector("#assignee-password");
+var assignee_roles = document.querySelector("#assignee-roles");
+
+//confirm button
+var confirm_add_assignee = document.querySelector("#confirm-assignee-add-btn");
+
+// Store the input values as an object in sessionStorage whenever they change
+function storeInputValues() {
+   // Retrieve existing data from session storage or initialize an empty array
+  let existing_assignee_data = JSON.parse(sessionStorage.getItem("assignee_input_values")) || [];
+  
+  // Make sure existing_data is an array (if it's not, initialize it as an empty array)
+  if (!Array.isArray(existing_assignee_data)) {
+    existing_assignee_data = [];
+  }
+
+  // Create a new object for the current input values
+  const assignee_input_values = {
+    assignee_name_value: assignee_name.value,
+    assignee_email_value: assignee_email.value,
+    assignee_contact_value: assignee_contact.value,
+    assignee_password_value: assignee_password.value,
+    assignee_roles_value: assignee_roles.value,
+  };
+
+  // Add the new input_values object to the existing_data array
+  existing_assignee_data.push(assignee_input_values);
+
+  // Store the updated array in session storage
+  sessionStorage.setItem("assignee_input_values", JSON.stringify(existing_assignee_data));
+populate_table()
+
+  
+    
+};
+
+function populate_table(){
+  var table_body = document.getElementById("team_table_body");
+  
+    // Retrieve the data from the session storage
+    var retrieved_data = JSON.parse(sessionStorage.getItem("assignee_input_values")) || [];
+  
+    // Loop through the retrieved data and create rows for each entry
+    retrieved_data.forEach((data) => {
+      // Create a new row
+      var new_row = document.createElement("tr");
+  
+      // Populate the row with data from the retrieved data
+      var tdsHTML = `
+        <td>${data.assignee_name_value}</td>
+        <td>${data.assignee_email_value}</td>
+        <td>${data.assignee_contact_value}</td>
+        <td>${data.assignee_password_value}</td>
+        <td>${data.assignee_roles_value}</td> 
+        <!-- Add more columns as needed -->
+      `;
+      new_row.innerHTML = tdsHTML;
+      table_body.appendChild(new_row);
+    });
+}
+
+//Handling clicks
+confirm_add_assignee.onclick = function(event){
+  event.preventDefault();
+  storeInputValues();
+  populate_table();
+
+}
+
+
+ // Get reference to the search bar
+ const searchBar = document.getElementById("assignee-search");
+
+ // Get reference to the table body
+ const tableBody = document.getElementById("team_table_body");
+ 
+ // Add event listener to the search bar
+ searchBar.addEventListener("input", function () {
+   const searchQuery = searchBar.value.toLowerCase();
+   const rows = tableBody.getElementsByTagName("tr");
+ 
+   for (const row of rows) {
+     const columns = row.getElementsByTagName("td");
+     let matchFound = false;
+ 
+     for (const column of columns) {
+       if (column.textContent.toLowerCase().includes(searchQuery)) {
+         matchFound = true;
+         break;
+       }
+     }
+ 
+     // Show/hide rows based on the search query
+     if (matchFound) {
+       row.style.display = "";
+     } else {
+       row.style.display = "none";
+     }
+   }
+ });

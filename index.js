@@ -261,7 +261,7 @@ confirmAdd.onclick = function(e){
 
 if(localStorage.getItem("taskData") != null){
   taskDetails = JSON.parse(localStorage.getItem("taskData"));
-  console.log(taskDetails)
+  
 }
 
 const additionData = () => {
@@ -411,12 +411,12 @@ newProjectButton.addEventListener("click",()=>{
 });
 
 //Add button in add project
-var confirmAddProjectButton = document.querySelector("#confirm-add-project-btn");
-confirmAddProjectButton.addEventListener("click",()=>{
-  //if data is successfully saved in the database, then
-  swal("Good Job","Project added Successfully","success");
-  addProjectModal.classList.remove("active");
-})
+// var confirmAddProjectButton = document.querySelector("#confirm-add-project-btn");
+// confirmAddProjectButton.addEventListener("click",()=>{
+//   //if data is successfully saved in the database, then
+//   swal("Good Job","Project added Successfully","success");
+//   addProjectModal.classList.remove("active");
+// })
 
 //Project close button
 
@@ -477,6 +477,64 @@ for (var i = 0; i < allActivityBtn.length; i++) {
   //    alert("Hey");
   //  })
   // }
+
+//Grabbing the elements
+var project_name = document.querySelector("#project-name");
+var project_manager = document.querySelector("#project-manager")
+var start_date = document.querySelector("#project-start-date")
+var end_date = document.querySelector("#project-end-date")
+var duration = document.querySelector("#project-duration")
+var budget = document.querySelector("#project-budget")
+
+//confirm button
+var confirm_add_project = document.querySelector("#confirm-add-project-btn");
+
+// Store the input values as an object in sessionStorage whenever they change
+function storeInputValues() {
+   // Retrieve existing data from session storage or initialize an empty array
+  let existing_data = JSON.parse(sessionStorage.getItem("input_values")) || [];
+  
+  // Make sure existing_data is an array (if it's not, initialize it as an empty array)
+  if (!Array.isArray(existing_data)) {
+    existing_data = [];
+  }
+
+  // Check if any of the input fields are empty
+    if (
+      project_name.value === "" ||
+      project_manager.value === "" ||
+      start_date.value === "" ||
+      end_date.value === "" ||
+      duration.value === "" ||
+      budget.value === ""
+) {
+  swal("Error", "Please fill in all the fields.", "error");
+  return
+  }
+  else{
+
+  // Create a new object for the current input values
+  const input_values = {
+    project_name_value: project_name.value,
+    project_manager_value: project_manager.value,
+    start_date_value: start_date.value,
+    end_date_value: end_date.value,
+    duration_value: duration.value,
+    budget_value: budget.value,
+  };
+
+  // Add the new input_values object to the existing_data array
+  existing_data.push(input_values);
+  swal("Good Job","Project added Successfully","success");
+  addProjectModal.classList.remove("active");
+  // Store the updated array in session storage
+  sessionStorage.setItem("input_values", JSON.stringify(existing_data));
+}
+}
+//Handling clicks
+confirm_add_project.addEventListener("click", storeInputValues);
+  
+
 
 
 

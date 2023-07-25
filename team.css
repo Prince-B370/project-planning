@@ -310,7 +310,7 @@ thead th.active,tbody td.active {
 .mod-add-assignee{
     
     width: 400px;
-    height: 350px;
+    height: 400px;
     background:rgb(216, 214, 214);
     position: fixed;
     top: 10%;
