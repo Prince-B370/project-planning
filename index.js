@@ -276,11 +276,25 @@ const additionData = () => {
     budget:budgetEl.value,
     status:statusEl.value
   })
+  if(wbsEl.value === ""||
+    taskEl.value === ""||
+    assigneeEl.value === ""||
+    startDateEl.value === ""||
+    endDateEl.value === ""||
+    durationEl.value === ""||
+    resourcesEl.value === ""||
+    budgetEl.value === ""||
+    statusEl.value
+    ){
+      swal("Error", "Please fill in all the fields.", "error");
+    }
+    else{
   //Convert the array into a string that can be saved in the local storage
   taskString = JSON.stringify(taskDetails);
   //Setting the key as taskData and value as taskString
 localStorage.setItem("taskData",taskString);
 swal("Good job!", "Task Addition Successful!", "success");
+}
 }
 
 tableData = document.querySelector("#table-data");
@@ -490,7 +504,8 @@ var budget = document.querySelector("#project-budget")
 var confirm_add_project = document.querySelector("#confirm-add-project-btn");
 
 // Store the input values as an object in sessionStorage whenever they change
-function storeInputValues() {
+function storeInputValues(event) {
+  event.preventDefault()
    // Retrieve existing data from session storage or initialize an empty array
   let existing_data = JSON.parse(sessionStorage.getItem("input_values")) || [];
   
@@ -509,7 +524,7 @@ function storeInputValues() {
       budget.value === ""
 ) {
   swal("Error", "Please fill in all the fields.", "error");
-  return
+  
   }
   else{
 

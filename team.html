@@ -8,6 +8,7 @@
     <title>Team</title>
     <link rel="stylesheet" href="team.css">
     <script src="https://kit.fontawesome.com/96e5cb2de4.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -25,14 +26,14 @@
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF </label>
-                    <label for="export-file" id="tosON">JSON </label>
+                    <label for="export-file" id="toJSON">JSON </label>
                     <label for="export-file" id="toCSV">CSV </label>
                     <label for="export-file" id="toEXCEL">EXCEL</label>
                 </div>
             </div>
         </section>
         <section class="table__body">
-            <table>
+            <table id="assignee-table">
                 <thead>
                     <tr>
                         <th> Name </th>
@@ -64,7 +65,7 @@
     <div class="mod-add-assignee">
       <i class="fa-solid fa-circle-xmark assignee-close-icon"></i>
       <h3 style="font-family: poppins;text-align: center;">Assignee Registration</h3>
-      <form action="" id="assinee-form">
+      <form action="" id="assignee-form">
         
           <div class="input-box">
               <label for="assignee-name">Name</label>
